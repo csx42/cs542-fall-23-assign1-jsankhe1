@@ -1,7 +1,7 @@
 package studentCoursesMgmt.driver;
 
 /**
- * @author placeholder
+ * @author Jay Balaram Sankhe
  *
  */
 public class Driver {
