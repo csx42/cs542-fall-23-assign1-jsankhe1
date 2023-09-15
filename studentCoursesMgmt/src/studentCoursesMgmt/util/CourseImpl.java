@@ -1,5 +1,4 @@
 package studentCoursesMgmt.util;
 
-public class FileProcessor {
-	
+public class CourseImpl {
 }
