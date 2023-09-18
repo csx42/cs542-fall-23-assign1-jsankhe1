@@ -1,7 +1,7 @@
 package studentCoursesMgmt.util;
 
-public interface CourseI {
+public interface CourseInterface {
     String getCourseName();
-    int getCourseSize();
+    int getCourseCapacity();
     int getCourseTime();
 }

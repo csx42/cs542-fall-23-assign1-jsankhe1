@@ -1,6 +1,6 @@
 package studentCoursesMgmt.driver;
 
-import studentCoursesMgmt.util.FileProcessorImpl;
+import studentCoursesMgmt.util.*;
 
 import java.util.List;
 
@@ -26,9 +26,17 @@ public class Driver {
 
         System.out.println("Hello World! Lets get started with the assignment");
         FileProcessorImpl fp = new FileProcessorImpl();
-        List<String> studentPrefs = fp.storeStudentPrefs(args[0]);
-        List<String> courseInfoPrefs = fp.storeCourseInfo(args[1]);
-
+        List<String> studentPrefsData = fp.storeStudentPrefs(args[0]);
+        List<String> courseInfoPrefsData = fp.storeCourseInfo(args[1]);
+        StudentPrefsGeneratorInterface studentPrefs = new StudentPrefsGenerator();
+        CourseInfoGeneratorInterface courseInfo = new CourseInfoGeneratorImpl();
+        List<StudentImpl> studentPrefsArray = studentPrefs.createStudentData(studentPrefsData);
+        List<CourseImpl> courseDataArray = courseInfo.getCourseInfo(courseInfoPrefsData);
+        System.out.println(studentPrefsData);
+        System.out.println(studentPrefsArray);
+        System.out.println("Below is course info\n");
+        System.out.println(courseInfoPrefsData);
+        System.out.println(courseDataArray);
 
     }
 }

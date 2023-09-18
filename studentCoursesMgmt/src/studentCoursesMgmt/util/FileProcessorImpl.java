@@ -18,13 +18,14 @@ public class FileProcessorImpl implements FileProcessorI {
         List<String> studentPrefs = new ArrayList<>();
 
         try{
-            File file = new File(fileName); // Create a File object from the file name
+            System.out.println(fileName);
+            File file = new File("../" +fileName); // Create a File object from the file name
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {
             studentPrefs.add(sc.nextLine());
             }
-            studentPrefs.add(sc.nextLine());
+//            studentPrefs.add(sc.nextLine());
 
         }
         catch (FileNotFoundException fnf) {
@@ -37,13 +38,13 @@ public class FileProcessorImpl implements FileProcessorI {
     public List<String> storeCourseInfo(String fileName){
         List<String> courseInfo = new ArrayList<>();
         try {
-            File file = new File(fileName); // Create a File object from the file name
+            File file = new File("../"+fileName); // Create a File object from the file name
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {
                 courseInfo.add(sc.nextLine());
             }
-            courseInfo.add(sc.nextLine());
+//            courseInfo.add(sc.nextLine());
         }
         catch (FileNotFoundException fnf) {
             System.out.println("File Not Found" + fnf.getMessage()); // Print to console for debugging
@@ -51,5 +52,7 @@ public class FileProcessorImpl implements FileProcessorI {
         }
     return courseInfo;
     }
+
+
 
 }
