@@ -2,7 +2,9 @@ package studentCoursesMgmt.driver;
 
 import studentCoursesMgmt.util.*;
 
+import javax.xml.crypto.Data;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Jay Balaram Sankhe
@@ -28,15 +30,20 @@ public class Driver {
         FileProcessorImpl fp = new FileProcessorImpl();
         List<String> studentPrefsData = fp.storeStudentPrefs(args[0]);
         List<String> courseInfoPrefsData = fp.storeCourseInfo(args[1]);
-        StudentPrefsGeneratorInterface studentPrefs = new StudentPrefsGenerator();
-        CourseInfoGeneratorInterface courseInfo = new CourseInfoGeneratorImpl();
-        List<StudentImpl> studentPrefsArray = studentPrefs.createStudentData(studentPrefsData);
-        List<CourseImpl> courseDataArray = courseInfo.getCourseInfo(courseInfoPrefsData);
+//        StudentPrefsGeneratorInterface studentPrefs = new StudentPrefsGenerator();
+//        CourseInfoGeneratorInterface courseInfo = new CourseInfoGeneratorImpl();
+        DataGeneratorInterface parsedObjectListData = new DataGeneratorImpl();
+        List<StudentImpl> studentPrefsArray = parsedObjectListData.createStudentData(studentPrefsData);
+        List<CourseImpl> courseDataArray = parsedObjectListData.getCourseInfo(courseInfoPrefsData);
         System.out.println(studentPrefsData);
         System.out.println(studentPrefsArray);
         System.out.println("Below is course info\n");
         System.out.println(courseInfoPrefsData);
         System.out.println(courseDataArray);
-
+        AssigningLogicInterface assigner = new AssigningLogicImpl();
+        Map<Integer, List<String>> results = assigner.assignCourses(studentPrefsArray, courseDataArray);
+        System.out.println(results);
+        System.out.println(courseDataArray);
+        // course capacity data  in course prefs array isn't changing after assigning, check it out.
     }
 }
