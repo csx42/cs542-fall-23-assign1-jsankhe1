@@ -1,5 +1,8 @@
 package studentCoursesMgmt.util;
 
+import java.util.Map;
+import java.util.List;
+
 public class CourseImpl implements CourseInterface{
 
     private int courseCapacity, courseTime;
@@ -30,6 +33,7 @@ public class CourseImpl implements CourseInterface{
     public String getCourseName() {
         return courseName;
     }
+
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;

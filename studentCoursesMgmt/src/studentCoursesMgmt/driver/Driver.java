@@ -27,14 +27,16 @@ public class Driver {
 
 
         System.out.println("Hello World! Lets get started with the assignment");
-        FileProcessorImpl fp = new FileProcessorImpl();
-        List<String> studentPrefsData = fp.storeStudentPrefs(args[0]);
-        List<String> courseInfoPrefsData = fp.storeCourseInfo(args[1]);
-//        StudentPrefsGeneratorInterface studentPrefs = new StudentPrefsGenerator();
-//        CourseInfoGeneratorInterface courseInfo = new CourseInfoGeneratorImpl();
-        DataGeneratorInterface parsedObjectListData = new DataGeneratorImpl();
-        List<StudentImpl> studentPrefsArray = parsedObjectListData.createStudentData(studentPrefsData);
-        List<CourseImpl> courseDataArray = parsedObjectListData.getCourseInfo(courseInfoPrefsData);
+        FileProcessorImpl studentFp = new FileProcessorImpl(args[0]);
+        FileProcessorImpl courseFp = new FileProcessorImpl(args[1]);
+        storeStudentInfo studentProcessor = new storeStudentInfo();
+        storeCourseInfo courseProcessor = new storeCourseInfo();
+
+        List<String> studentPrefsData = studentProcessor.generateStudentList(studentFp);
+        List<String> courseInfoPrefsData = courseProcessor.generateCourseList(courseFp);
+        DataGeneratorInterface parsedObjectListDataGenerator = new DataGeneratorImpl();
+        List<StudentImpl> studentPrefsArray = parsedObjectListDataGenerator.createStudentData(studentPrefsData);
+        List<CourseImpl> courseDataArray = parsedObjectListDataGenerator.getCourseInfo(courseInfoPrefsData);
         System.out.println(studentPrefsData);
         System.out.println(studentPrefsArray);
         System.out.println("Below is course info\n");

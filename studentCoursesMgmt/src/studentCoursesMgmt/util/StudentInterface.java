@@ -6,4 +6,6 @@ public interface StudentInterface {
     int getStudentId();
     List<String> getPreferences();
 
+
+
 }
