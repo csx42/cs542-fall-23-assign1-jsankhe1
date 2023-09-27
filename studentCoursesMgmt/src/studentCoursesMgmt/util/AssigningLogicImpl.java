@@ -13,7 +13,7 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
                                                     List<CourseImpl> courseArray,
                                                     Results result,
                                                     String regResults,
-                                                    String regConflicts,,
+                                                    String regConflicts,
                                                     String errorLog) {
         Map<Integer, List<String>> assignedCourses = new HashMap<>();
         for (StudentImpl student : studentPrefsArray) {
@@ -53,7 +53,7 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
                             //use writeRegistrationConflictsToFile to write to file
                             result.writeRegistrationConflictsToFile("registration_conflicts.txt", student.getStudentId(),
                                                                                             studentCoursePreferences.get(preference), reason);
-                            regConflicts.add(student.getStudentId() + " couldn't be asignned course:" + studentCoursePreferences.get(preference) + ". Reason: " + "Time Clash Check Failed with another course");
+//                            regConflicts.add(student.getStudentId() + " couldn't be asignned course:" + studentCoursePreferences.get(preference) + ". Reason: " + "Time Clash Check Failed with another course");
                         }
                         // continue to next preference
                         satisfactionRating--;
