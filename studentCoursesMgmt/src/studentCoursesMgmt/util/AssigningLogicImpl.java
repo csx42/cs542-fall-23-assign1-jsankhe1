@@ -6,20 +6,31 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
 
 
     public List<String> regConflicts = new ArrayList<>();
+    // CREATE a  result object
 
 
-    public Map<Integer, List<String>> assignCourses(List<StudentImpl> studentPrefsArray, List<CourseImpl> courseArray) {
+    public Map<Integer, List<String>> assignCourses(List<StudentImpl> studentPrefsArray,
+                                                    List<CourseImpl> courseArray,
+                                                    Results result,
+                                                    String regResults,
+                                                    String regConflicts,,
+                                                    String errorLog) {
         Map<Integer, List<String>> assignedCourses = new HashMap<>();
         for (StudentImpl student : studentPrefsArray) {
             List<String> studentCoursePreferences = student.getPreferences();
-            for (int preference = 0; preference < 9; preference++) {
+            int satisfactionRating = 9; // 9 is the highest satisfaction rating, if first preference is assigned,
+            // satisfaction rating is 9 and stored into student object, if not assigned, we decrement it without storing it.
+            for (int preference = 0; preference < courseArray.size(); preference++) {
+
 
                 if (student.getStudentCourseCount() < 3) {
-                    /* {} */
-
-                    if(capacityCheck(studentCoursePreferences.get(preference), courseArray) && noTimeClashCheck(studentCoursePreferences.get(preference), student, courseArray, timeSlotMapping(courseArray))) {
+                    if (capacityCheck(studentCoursePreferences.get(preference), courseArray) &&
+                            noTimeClashCheck(studentCoursePreferences.get(preference), student, courseArray, timeSlotMapping(courseArray))) {
                         student.addCourse(studentCoursePreferences.get(preference));
-                        //adds student course to list and increments got course by 1
+                        student.setSatisfactionRating(satisfactionRating);
+                        // update the course capacity
+                        satisfactionRating--;
+                        //adds student course to list and increments got course by 1, update the course capacity
                         //below loop is to ensure we decrement the correct course capacity.
                         for (CourseImpl course : courseArray) {
                             if (course.getCourseName().equals(studentCoursePreferences.get(preference))) {
@@ -29,20 +40,23 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
 
                     } else {
                         String reason = "";
+
                         //if capacity check fails or timeslotclash, we move to the next preference
                         // if capacity check fails, we write the student name, the course that couldnt be assigned and the reason why it couldnt be assigned
                         // if timeslot clash, we write the student name, the course that couldnt be assigned and the reason why it couldnt be assigned to regConflicts
                         if (!capacityCheck(studentCoursePreferences.get(preference), courseArray)) {
                             reason = " Capacity Check Failed, course is at full capacity";
                             //use writeRegistrationConflictsToFile to write to file
-
-                            
-                            regConflicts.add(student.getStudentId() + " " + studentCoursePreferences.get(preference) + " " + "Capacity Check Failed, course if at full capacity");
+                            result.writeRegistrationConflictsToFile("registration_conflicts.txt", student.getStudentId(), studentCoursePreferences.get(preference), reason);
                         } else if (!noTimeClashCheck(studentCoursePreferences.get(preference), student, courseArray, timeSlotMapping(courseArray))) {
                             reason = " Time Clash Check Failed with another course";
+                            //use writeRegistrationConflictsToFile to write to file
+                            result.writeRegistrationConflictsToFile("registration_conflicts.txt", student.getStudentId(),
+                                                                                            studentCoursePreferences.get(preference), reason);
                             regConflicts.add(student.getStudentId() + " couldn't be asignned course:" + studentCoursePreferences.get(preference) + ". Reason: " + "Time Clash Check Failed with another course");
                         }
                         // continue to next preference
+                        satisfactionRating--;
                         continue;
 
 

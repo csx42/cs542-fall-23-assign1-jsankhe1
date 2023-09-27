@@ -31,9 +31,12 @@ public class Driver {
         FileProcessorImpl courseFp = new FileProcessorImpl(args[1]);
         storeStudentInfo studentProcessor = new storeStudentInfo();
         storeCourseInfo courseProcessor = new storeCourseInfo();
+        Results result = new Results(args[2], args[3], args[4]);
+
 
         List<String> studentPrefsData = studentProcessor.generateStudentList(studentFp);
         List<String> courseInfoPrefsData = courseProcessor.generateCourseList(courseFp);
+
         DataGeneratorInterface parsedObjectListDataGenerator = new DataGeneratorImpl();
         List<StudentImpl> studentPrefsArray = parsedObjectListDataGenerator.createStudentData(studentPrefsData);
         List<CourseImpl> courseDataArray = parsedObjectListDataGenerator.getCourseInfo(courseInfoPrefsData);
@@ -43,7 +46,7 @@ public class Driver {
         System.out.println(courseInfoPrefsData);
         System.out.println(courseDataArray);
         AssigningLogicInterface assigner = new AssigningLogicImpl();
-        Map<Integer, List<String>> results = assigner.assignCourses(studentPrefsArray, courseDataArray);
+        Map<Integer, List<String>> results = assigner.assignCourses(studentPrefsArray, courseDataArray, result, args[2], args[3], args[4]);
         System.out.println(results);
         System.out.println(courseDataArray);
         // course capacity data  in course prefs array isn't changing after assigning, check it out.

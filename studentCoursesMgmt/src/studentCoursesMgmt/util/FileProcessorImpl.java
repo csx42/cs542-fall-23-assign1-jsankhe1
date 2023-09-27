@@ -2,6 +2,7 @@ package studentCoursesMgmt.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,51 +28,30 @@ public class FileProcessorImpl implements FileProcessorI {
         return null;
     }
 
-
-//    public FileProcessorImpl() {
-//        /* Has two methods, storeStudentPrefs and storeCourseInfo.
-//         */
-//
-//    }
-
-//    public List<String> storeStudentInfo(String fileName){
-//        List<String> studentPrefs = new ArrayList<>();
-//
-//        try{
-//            System.out.println(fileName);
-//            File file = new File("../" +fileName); // Create a File object from the file name
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//            studentPrefs.add(sc.nextLine());
-//            }
-////            studentPrefs.add(sc.nextLine());
-//
-//        }
-//        catch (FileNotFoundException fnf) {
-//            System.out.println("File Not Found" + fnf.getMessage()); // Print to console for debugging
-//            System.exit(1); // Exit the program
-//        }
-//        return studentPrefs;
-//
-//    }
-//    public List<String> storeCourseInfo(String fileName){
-//        List<String> courseInfo = new ArrayList<>();
-//        try {
-//            File file = new File("../"+fileName); // Create a File object from the file name
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                courseInfo.add(sc.nextLine());
-//            }
-////            courseInfo.add(sc.nextLine());
-//        }
-//        catch (FileNotFoundException fnf) {
-//            System.out.println("File Not Found" + fnf.getMessage()); // Print to console for debugging
-//            System.exit(1); // Exit the program
-//        }
-//    return courseInfo;
-//    }
+    // write Line method
+    public void writeLine(String fileName, String line){
+        FileWriter fileWriter = null;
+        try {
+            // open file in append mode and write to it, it has specific path
+            File file = new File("../" + fileName);
+            fileWriter = new FileWriter(file, true);
+            fileWriter.write(line + "\n");
+            fileWriter.close();
+        } catch (Exception e) {
+            System.err.println("Error while writing to file: " + fileName);
+            //print stack trace
+            e.printStackTrace();
+            System.exit(1);
+        }
+        finally {
+            try {
+                fileWriter.close();
+            } catch (Exception e) {
+                System.out.println("Error while closing file: " + fileName);
+                System.exit(1);
+            }
+        }
+    }
 
     public Scanner getScanner() {
         return scanner;
