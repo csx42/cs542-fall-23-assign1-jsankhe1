@@ -34,7 +34,9 @@ public class StudentImpl implements StudentInterface {
             }
         }
         catch (NumberFormatException e) {
-            System.out.println("Unable to parse Integer at beginning");
+            System.err.println("Unable to parse Integer at beginning");
+            e.printStackTrace();
+            System.exit(1);
         }
     }
 

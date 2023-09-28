@@ -106,6 +106,15 @@ noTimeClashCheck ensures there's no time clash between courses that a student is
   * which is ideal for scenarios where we aren't certain about the number of elements in advance, 
   * such as number of students. (The number of students was not fixed, changes according to input)
 
+-----------------------------------------------------------------------
+## Complexity Analysis of Algorithm:
+* 1st LOOP - runs for each student in studentList, let size of studentList be n
+* 2nd inner loop runs for size of coursePrefsList, let size of coursePrefsList be m
+* in the 2nd loop, the following methods are called:
+* * capacityCheck() - runs in constant time for size of coursePrefsList, let size of coursePrefsList be m
+* * timeSlotMapping() - runs in constant time for size of coursePrefsList, let size of coursePrefsList be m
+* * noTimeClashCheck() - runs in constant time for size of coursePrefsList and
+* **Thus the complexity of the algorithm is O(n*m)**
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
