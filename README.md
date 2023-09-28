@@ -25,13 +25,17 @@ Description: Compiles your code and generates .class files inside the BUILD fold
 
 -----------------------------------------------------------------------
 ## Instruction to run:
+## RECOMMENDED COMMAND TO RUN THE PROGRAM IS BELOW
+ant -buildfile studentCoursesMgmt/src/build.xml run -Darg0=coursePrefs.txt -Darg1=courseInfo.txt -Darg2=regResults.txt -Darg3=regConflicts.txt -Darg4=errorLog.txt
+
+-----------------------------------------------------------------------
 
 ####Command: ant -buildfile studentCoursesMgmt/src/build.xml run -Darg0=<input_file.txt> -Darg1=<delete_file.txt> -Darg2=<output1_file.txt> -Darg3=<output2_file.txt> -Darg4=<output3_file.txt>
 
 ## Replace <fileName.txt> with real file names. For example, if the files are available in the path,
 ## you can run it in the following manner:
 
-### RECOMMENDED COMMAND TO RUN THE PROGRAM IS BELOW
+## RECOMMENDED COMMAND TO RUN THE PROGRAM IS BELOW
 ant -buildfile studentCoursesMgmt/src/build.xml run -Darg0=coursePrefs.txt -Darg1=courseInfo.txt -Darg2=regResults.txt -Darg3=regConflicts.txt -Darg4=errorLog.txt
 
 Note: Arguments accept the absolute path of the files.
@@ -51,8 +55,9 @@ the first two file names are the input files in the directory.
 * * capacityCheck() - This method checks if the capacity of the course is full or not.
 * * timeSlotMapping() - This method maps the time slot to the courses.
 * The Driver program then sends the map obtained from the AssigningLogic class 
-* to the Results class to write the output to the output files.
-* -----------------------------------------------------------------------
+to the Results class to write the output to the output files.
+* Asks User if they want the output to be printed on the console via Y or N input.
+---------------------------------------------------------------------------------
 ## Algorithm Used: 
 * The algorithm used to assign the courses to the students is a FCFS
 * It resides in AssigningLogic class.
