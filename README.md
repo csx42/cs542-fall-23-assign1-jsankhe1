@@ -1,6 +1,5 @@
 # CSX42: Assignment 1
-## Name: 
-Jay Balaram Sankhe
+## Name: Jay Balaram Sankhe
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
 
@@ -91,7 +90,7 @@ The student's final course assignment list is added to the assignedCourses hashm
 capacityCheck checks if there's any remaining capacity for a given course.
 timeSlotMapping creates a map of courses based on their time slots, which is used to detect clashes.
 noTimeClashCheck ensures there's no time clash between courses that a student is taking.
-
+-----------------------------------------------------------------------
 ## DATASTRUCTURES USED
 ### The data structures used are as follows:
 * **HashMap** - To store the student ID and the courses assigned to them.
@@ -115,6 +114,10 @@ noTimeClashCheck ensures there's no time clash between courses that a student is
 * * timeSlotMapping() - runs in constant time for size of coursePrefsList, let size of coursePrefsList be m
 * * noTimeClashCheck() - runs in constant time for size of coursePrefsList and
 * **Thus the complexity of the algorithm is O(n*m)**
+-----------------------------------------------------------------------
+## Ending Notes:
+* storeCourseInfo and storeStudentInfo methods in FileProcessor class are used to store the data in the data structures.
+* They are purely utility methods and thus I did not create a interface for them.
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -129,6 +132,6 @@ grade of 0 for the involved assignment for my first offense and that I
 will receive a grade of F for the course for any additional
 offense.""
 
-Date: -- 09/14/2023
+Date: -- 09/28/2023
 
 
