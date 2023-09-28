@@ -9,6 +9,14 @@ import java.util.Scanner;
 
 public class FileProcessorImpl implements FileProcessorI {
      private Scanner scanner;
+     //java docstring
+
+    /**
+     *
+     * @param fileName Str
+     * @return scanner
+     * @throws FileNotFoundException
+     */
     public FileProcessorImpl(String fileName) {
         try{
             scanner = new Scanner(new File("../" + fileName));
@@ -22,6 +30,11 @@ public class FileProcessorImpl implements FileProcessorI {
         }
     }
 
+    /**
+     *
+     * @param scanner
+     * @return
+     */
     public String nextLine(Scanner scanner){
         if(scanner.hasNextLine()){
             return scanner.nextLine();
@@ -30,6 +43,13 @@ public class FileProcessorImpl implements FileProcessorI {
     }
 
     // write Line method
+    // docstring
+
+    /**
+     *
+     * @param fileName
+     * @param line
+     */
     public void writeLine(String fileName, String line){
         FileWriter fileWriter = null;
         try {

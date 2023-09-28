@@ -24,10 +24,7 @@ public class Driver {
             System.err.println("Error: Incorrect number of arguments. Program accepts 5 arguments.");
             System.exit(0);
         }
-        //Command line arguments: boundary conditions checks: 8 points
-        // 1. Check for empty file name
-        // 2. Check for empty file path
-        // 3. Check for empty file extens
+
 
         System.out.println("Hello World! Lets get started with the assignment");
         FileProcessorImpl studentFp = new FileProcessorImpl(args[0]);
@@ -43,7 +40,7 @@ public class Driver {
         List<StudentImpl> studentPrefsArray = parsedObjectListDataGenerator.createStudentData(studentPrefsData);
         List<CourseImpl> courseDataArray = parsedObjectListDataGenerator.getCourseInfo(courseInfoPrefsData);
 
-        Results result = new Results();
+        Results result = new Results(args[2], args[3], args[4]);
         AssigningLogicInterface assigner = new AssigningLogicImpl();
 
         Map<Integer, List<String>> stuff = assigner.assignCourses(studentPrefsArray, courseDataArray, result, args[2], args[3], args[4]);
@@ -57,7 +54,7 @@ public class Driver {
         System.out.println("Would you like to view the results on console? Y/N");
         String choice = System.console().readLine();
         if (choice.equals("Y")) {
-            result.toStdOut(args[2]);
+            result.toStdOut();
         }
     }
 }

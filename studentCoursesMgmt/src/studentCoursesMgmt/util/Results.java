@@ -8,8 +8,28 @@ import java.util.Scanner;
 
 public class Results implements StdoutDisplayInterface, FileDisplayInterface {
 
-    public Results() {
+    private final String registrationResultsFile;
+    private final String registrationConflictFile;
+    private final String errorLog;
+
+    /**
+     * @param registrationResultsFile file name
+     * @param registrationConflictFile file name
+     * @param errorLog file name
+     * @return void
+     */
+    public Results(String registrationResultsFile, String registrationConflictFile, String errorLog) {
+        this.registrationResultsFile = registrationResultsFile;
+        this.registrationConflictFile = registrationConflictFile;
+        this.errorLog = errorLog;
     }
+
+
+    /**
+     * @param registrationConflictFile file name
+     * @param reason                   reason for error
+     * @return void
+     */
     @Override
     public void writeRegistrationConflictsToFile(String registrationConflictFile, String reason) {
         FileWriter fileWriter = null;
@@ -23,8 +43,7 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
         } catch (IOException e) {
             System.out.println("Error while writing to file: " + registrationConflictFile);
             System.exit(1);
-        }
-        finally {
+        } finally {
             try {
                 assert fileWriter != null;
                 fileWriter.close();
@@ -35,6 +54,12 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
         }
     }
 
+
+    /**
+     * @param errorLog file name
+     * @param reason   reason for error
+     * @return void
+     */
     @Override
     public void writeErrorToFile(String errorLog, String reason) {
         FileWriter errorFileWriter = null;
@@ -63,6 +88,13 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
     }
 
 
+
+    /**
+     * @param scheduleFile    file name
+     * @param assignedCourses Map DataStructure assigned courses
+     * @param studentArray    Arraylist student array
+     * @return void
+     */
     @Override
     public void writeRegistrationResultsToFile(String scheduleFile, Map<Integer,
             List<String>> assignedCourses, List<StudentImpl> studentArray) {
@@ -120,11 +152,11 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
         }
     }
 
-
-
-
+    /**
+     * @return void
+        */
     @Override
-     public void toStdOut() {
+    public void toStdOut() {
         try {
             //get the
             File file = new File("../" + registrationResultsFile);

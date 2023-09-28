@@ -6,6 +6,10 @@ import java.util.List;
 public class DataGeneratorImpl implements  DataGeneratorInterface{
     private List<StudentImpl> studentPrefsArray = new ArrayList<>();
 
+    /**
+     * @param studentPrefs
+     * @return studentPrefsArray (list)
+     */
     public List<StudentImpl> createStudentData(List<String> studentPrefs) {
 //        List<StudentImpl> studentPrefsArray = new ArrayList<>();
         for (int i = 0; i < studentPrefs.size(); i++) {
