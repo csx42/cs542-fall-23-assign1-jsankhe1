@@ -3,17 +3,25 @@
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
 
+## IMPORTANT NOTES:
+### * Program expects the coursePrefs.txt and courseInfo.txt to be given in the exact order as mentioned in run command.
+
 
 Following are the commands and the instructions to run ANT on your project.
-#### Note: build.xml is present in studentCoursesMgmt/src folder.
+* #### Note: build.xml is present in studentCoursesMgmt/src folder.
+
+* ####  regResults.txt, regConflicts.txt and errorLog.txt are the output files generated in the studentCoursesMgmt folder
+* #### They should be manually deleted before running the program again.
+* #### The program will not overwrite the files if they already exist, it will append the data to the existing files.
 
 -----------------------------------------------------------------------
 ## Instruction to clean:
 
-####Command: ant -buildfile studentCoursesMgmt/src/build.xml clean
+#### Command: ant -buildfile studentCoursesMgmt/src/build.xml clean
 
 Description: It cleans up all the .class files that were generated when you
 compiled your code.
+
 
 -----------------------------------------------------------------------
 ## Instruction to compile:
@@ -25,7 +33,7 @@ Description: Compiles your code and generates .class files inside the BUILD fold
 -----------------------------------------------------------------------
 ## Instruction to run:
 ## RECOMMENDED COMMAND TO RUN THE PROGRAM IS BELOW
-ant -buildfile studentCoursesMgmt/src/build.xml run -Darg0=coursePrefs.txt -Darg1=courseInfo.txt -Darg2=regResults.txt -Darg3=regConflicts.txt -Darg4=errorLog.txt
+#### ant -buildfile studentCoursesMgmt/src/build.xml run -Darg0=coursePrefs.txt -Darg1=courseInfo.txt -Darg2=regResults.txt -Darg3=regConflicts.txt -Darg4=errorLog.txt
 
 -----------------------------------------------------------------------
 
