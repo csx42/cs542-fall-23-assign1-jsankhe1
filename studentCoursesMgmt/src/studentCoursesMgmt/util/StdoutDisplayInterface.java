@@ -1,9 +1,5 @@
 package studentCoursesMgmt.util;
 
 public interface StdoutDisplayInterface {
-//    void writeToStdout();
-
-
-
-	
+    public void toStdOut(String registrationResultsFile);
 }

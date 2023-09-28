@@ -12,4 +12,8 @@ public interface AssigningLogicInterface {
                                                     String regConflicts,
                                                     String errorLog);
 
+    public boolean noTimeClashCheck(String courseName, StudentImpl student, List<CourseImpl> courseArray, Map<Integer, List<String>> timeSlotMap);
+    public Map<Integer, List<String>> timeSlotMapping(List<CourseImpl> courseArray);
+    public boolean capacityCheck(String courseName, List<CourseImpl> courseArray);
 }
+

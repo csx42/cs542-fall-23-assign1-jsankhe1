@@ -14,10 +14,11 @@ public class FileProcessorImpl implements FileProcessorI {
             scanner = new Scanner(new File("../" + fileName));
         } catch(FileNotFoundException fe)
         {
-            System.out.println(fe.getMessage());
+            System.err.println(fe.getMessage());
+            //print stack trace
+            fe.printStackTrace();
             System.exit(1);
         } finally {
-            System.out.println("in Finally block of file Processor");
         }
     }
 
@@ -38,7 +39,7 @@ public class FileProcessorImpl implements FileProcessorI {
             fileWriter.write(line + "\n");
             fileWriter.close();
         } catch (Exception e) {
-            System.err.println("Error while writing to file: " + fileName);
+            System.err.println("Error while writing to file: " + fileName + " System Message" + e.getMessage());
             //print stack trace
             e.printStackTrace();
             System.exit(1);

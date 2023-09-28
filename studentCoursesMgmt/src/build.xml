@@ -13,7 +13,7 @@
   <target name="clean">
        <delete dir="${BUILD}"/>
 <!--delete the program generated files on  ant clean-->
-        <delete file="../registration_conflicts.txt"/>
+<!--        <delete file="../registration_conflicts.txt"/>-->
   </target>
 
   <!-- Prepare target directories -->

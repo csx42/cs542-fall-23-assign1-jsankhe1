@@ -1,0 +1,10 @@
+665 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+555 couldn't be asignned course:C. Reason: Time Clash Check Failed with another course
+135 couldn't be asignned course:C. Reason: Time Clash Check Failed with another course
+618 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+322 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+500 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+486 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+883 couldn't be asignned course:C. Reason: Time Clash Check Failed with another course
+744 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course
+974 couldn't be asignned course:B. Reason: Time Clash Check Failed with another course

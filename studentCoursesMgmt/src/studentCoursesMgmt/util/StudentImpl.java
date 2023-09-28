@@ -6,8 +6,8 @@ import java.util.List;
 public class StudentImpl implements StudentInterface {
 
     private  int studentId;
-    private  int satisfactionRating = 0;
-    private int averageSatisfactionRating = 0;
+    private  double satisfactionRating = 0;
+    private double averageSatisfactionRating = 0;
     private List<String> assignedCourses = new ArrayList<>(3);
     List<String> preferences = new ArrayList<>();
     private int studentCourseCount = 0;
@@ -73,11 +73,11 @@ public class StudentImpl implements StudentInterface {
                 ", preferences=" + preferences +
                 '}';
     }
-    public int getSatisfactionRating() {
+    public double  getSatisfactionRating() {
         return satisfactionRating;
     }
 
-    public int getAverageSatisfactionRating() {
+    public double getAverageSatisfactionRating() {
         if(this.studentCourseCount == 0 || this.satisfactionRating == 0)
         {
             return 0;
@@ -88,11 +88,11 @@ public class StudentImpl implements StudentInterface {
         }
     }
 
-    public void setAverageSatisfactionRating(int averageSatisfactionRating) {
-        this.averageSatisfactionRating = averageSatisfactionRating;
+    public void setAverageSatisfactionRating(double averageSatisfactionRating) {
+        this.averageSatisfactionRating = (double) averageSatisfactionRating / 3;
     }
 
-    public void setSatisfactionRating(int satisfactionRating) {
+    public void setSatisfactionRating(double satisfactionRating) {
         this.satisfactionRating = this.satisfactionRating + satisfactionRating;
     }
 

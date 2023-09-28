@@ -1,9 +1,12 @@
 package studentCoursesMgmt.util;
 
+import java.util.List;
+import java.util.Map;
+
 public interface FileDisplayInterface {
-    void writeRegistrationResultsToFile(String fileName, String line);
+    public void writeRegistrationResultsToFile(String scheduleFile, Map<Integer,
+            List<String>> assignedCourses, List<StudentImpl> studentArray);
+    public void writeRegistrationConflictsToFile(String registrationConflictFile, String reason);
 
-    public void writeRegistrationConflictsToFile(String registrationConflictFile, int studentId, String courseName, String reason);
-
-    void writeErrorToFile(String fileName, String line);
+    public void writeErrorToFile(String fileName, String reason);
 }
