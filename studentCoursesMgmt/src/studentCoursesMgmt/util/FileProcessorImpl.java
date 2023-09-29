@@ -19,7 +19,7 @@ public class FileProcessorImpl implements FileProcessorI {
      */
     public FileProcessorImpl(String fileName) {
         try{
-            scanner = new Scanner(new File("../" + fileName));
+            scanner = new Scanner(new File(fileName));
         } catch(FileNotFoundException fe)
         {
             System.err.println(fe.getMessage());
@@ -54,7 +54,7 @@ public class FileProcessorImpl implements FileProcessorI {
         FileWriter fileWriter = null;
         try {
             // open file in append mode and write to it, it has specific path
-            File file = new File("../" + fileName);
+            File file = new File(fileName);
             fileWriter = new FileWriter(file, true);
             fileWriter.write(line + "\n");
             fileWriter.close();

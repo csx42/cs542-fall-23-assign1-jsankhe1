@@ -35,7 +35,7 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
         FileWriter fileWriter = null;
         try {
             // open file in append mode and write to it, it has specific path
-            File file = new File("../" + registrationConflictFile);
+            File file = new File(registrationConflictFile);
             fileWriter = new FileWriter(file, true);
             fileWriter.write(reason + "\n");
 //            fileWriter.flush();
@@ -64,7 +64,7 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
     public void writeErrorToFile(String errorLog, String reason) {
         FileWriter errorFileWriter = null;
         try {
-            File file = new File("../" + errorLog);
+            File file = new File(errorLog);
             errorFileWriter = new FileWriter(file, true);
             errorFileWriter.write(reason + "\n");
             errorFileWriter.close();
@@ -102,7 +102,7 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
         double totalAverageSatisfactionRating = 0.0;
         try {
             // Open the file in append mode and write to it
-            File file = new File("../" + scheduleFile);
+            File file = new File(scheduleFile);
             printWriter = new PrintWriter(new FileWriter(file, true));
 
             // Iterate through the list of students
@@ -159,7 +159,7 @@ public class Results implements StdoutDisplayInterface, FileDisplayInterface {
     public void toStdOut() {
         try {
             //get the
-            File file = new File("../" + registrationResultsFile);
+            File file = new File(registrationResultsFile);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 System.out.println(scanner.nextLine());
