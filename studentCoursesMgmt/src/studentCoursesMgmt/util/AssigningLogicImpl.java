@@ -66,14 +66,14 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
                         // if timeslot clash, we write the student name, the course that couldnt be
                         // assigned and the reason why it couldnt be assigned to regConflicts
                         if (!capacityCheck(studentCoursePreferences.get(preference), courseArray)) {
-                            reason = student.getStudentId() + " couldn't be asignned course:" +
+                            reason = student.getStudentId() + " couldn't be assigned course:" +
                                     studentCoursePreferences.get(preference) + ". Reason: " +
                                     "Course is at capacity. Moving to next preference";
                             // use writeRegistrationConflictsToFile to write to file
                             result.writeErrorToFile(errorLog, reason);
                         } else if (!noTimeClashCheck(studentCoursePreferences.get(preference), student, courseArray,
                                 timeSlotMapping(courseArray))) {
-                            reason = student.getStudentId() + " couldn't be asignned course:" +
+                            reason = student.getStudentId() + " couldn't be assigned course:" +
                                     studentCoursePreferences.get(preference) + ". Reason: " +
                                     "Time Clash Check Failed with another course";
                             // use writeRegistrationConflictsToFile to write to file
@@ -95,10 +95,7 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
             // at all, we just add empty spaces to the list where
             // the course should have been assigned.
             // if student has 3 courses assigned, we dont need to do anything.
-            // but if only 1 assigned, we add 2 empty spaces to the list, if 2 assigned, we
-            // add 1 empty space to the list, if none assigned, we add 3 empty spaces to the
-            // list.
-            // and create a map with student id and the list of courses assigned.
+
             if (student.getStudentCourseCount() < 3) {
                 int emptySpaces = 3 - student.getStudentCourseCount();
                 for (int i = 0; i < emptySpaces; i++) {
@@ -201,4 +198,3 @@ public class AssigningLogicImpl implements AssigningLogicInterface {
         }
     }
 }
-// }
